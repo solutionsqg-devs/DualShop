@@ -1,0 +1,193 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "name":"Aguila clasica",
+        "detail": "X3 uni alf min torta aguila",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2F3b4%2B247HytmjdhaNUZ1t7w%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id": 2,
+        "name":"Bon o bon",
+        "detail": "X 3 UNI ALF BONOBON SIMPLE NEGRO",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FWjxY0P73kkRkKraE54peww%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id": 3,
+        "name":"Terrabusi",
+        "detail": "X 3 UNI ALF TRIPLE TERRABUSI TORTA",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2F%2BwTyXwQDYOBFSMQ0%2B3vm4g%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id": 4,
+        "name":"Tri Shot",
+        "detail": "X 3 UNI ALF TRISHOT",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FIqoU0DttI8TOBhubvvWGsQ%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id": 5,
+        "name":"Aguila coco",
+        "detail": "X 3 ALF MINITORTA AGUILA COCO",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FRQ5D7%2B%2BENYidpe8JMavzYg%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id": 6,
+        "name":"Milka oreo",
+        "detail": "X 3 UNI ALF MILKA OREO",
+        "price": 590.06,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2F9Xsw4HIVpdoZ6s2uCm1OXg%3D%3D.jpg?alt=media",
+        "category": "Alfajores",
+        "bulto": 3
+      },
+      {
+        "id":7,
+        "name":"Apache American",
+        "detail": "X 10 UNI TABACO APACHE X 30GRS AMERICAN",
+        "price": 2676.40,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FchwPhLJz2EALthJ1Nca8XA%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":8,
+        "name":"Look out",
+        "detail": "X 10 UNI TABACO LOOK OUT X 30GR AMERICAN",
+        "price": 4711.64,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FPgTmyojRdWFrWm805pip2g%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":9,
+        "name":"Argentino",
+        "detail": "X 10 UNI TABACO ARGENTO X 50 GRAMOS",
+        "price": 4565.04,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FNJKzl0SAE7QRhz8vZ01gg%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":10,
+        "name":"Puro Argentino",
+        "detail": "X 10 UNI TABACO PURO ARGENTINO X 50GRS",
+        "price": 4870.37,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FFDiM7Ymg7gVTrltuf89%2BfQ%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":11,
+        "name":"Choice vainilla",
+        "detail": "X 10 UNI TABACO CHOICE",
+        "price": 4944.50,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FUGMTqbhap%2BTjE3GsX7WFvQ%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":12,
+        "name":"Van kiff",
+        "detail": "X 10 UNI TABACO VAN KIFF NATURAL",
+        "price": 3766.94,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FX%2BjkqSSp56gqbS%2BKlcaFeg%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 10
+      },
+      {
+        "id":13,
+        "name":"Pacha mama",
+        "detail": "X 5 UNIDADES TABACO PACHAMAMAS",
+        "price":  3765.42,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FAQufLEHwoZr240AcuGqnQ%3D%3D.jpg?alt=media",
+        "category": "Tabacos",
+        "bulto": 5
+      },
+      {
+        "id":14,
+        "name":"Milca blanco",
+        "detail": "X 3 UNI MILKA BLANCO X 55 GRS",
+        "price": 1339.84,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FQa9dV4FANbJGilcs42T3zQ%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },{
+        "id":15,
+        "name":"Cofler air mixto",
+        "detail": "X 3 UNI COFLER AIR BONOBON X 67 GR",
+        "price": 1168.95,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FI8R7MC2NWDBGMw73rMjtcQ%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },
+      {
+        "id":16,
+        "name":"Milca leche",
+        "detail": "X 3 UNI MILKA LECHE X 55 GRS",
+        "price": 600,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2F67hTNswD9DrYpqIvpOQw%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },
+      {
+        "id":17,
+        "name":"Snacky",
+        "detail": "X 3 UNI SNACKY",
+        "price": 961.72,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2Fbsrl1A3oBZEdcpPe2OXGg%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },
+      {
+        "id":18,
+        "name":"Cofler air blanco",
+        "detail": "X 3 UNI COFLER AIR BLANCO X 27 GR",
+        "price": 616.99,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2F3vXzOxfab5v1U9cvaKgFgg%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },
+      {
+        "id":19,
+        "name":"Mini rhodesia",
+        "detail": "X 3 UNI MINI RHODESIA",
+        "price": 600,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2Fj9oZ0u02vAWoWhX24uEwQA%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 3
+      },
+      {
+        "id":20,
+        "name":"Chocolate Aguila",
+        "detail": "X 15 UNI CHOCOLATE AGUILA NEGRO X 100 GRAMOS",
+        "price": 589.60,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FvrGd4u9LMq5BGSiXTAChw%3D%3D.jpg?alt=media",
+        "category": "Chocolates",
+        "bulto": 15
+      },
+      {
+        "id":21,
+        "name":"Naipe casino",
+        "detail": "X 12 UNI NAIPE CASINO X 50",
+        "price": 1643.71,
+        "image_url":"https://firebasestorage.googleapis.com/v0/b/kyte-7c484.appspot.com/o/umv0ruBRrzQU0jw2Gvzj3HKBVEn2%2FnyJdeFUVshtXRLcxGkaITg%3D%3D.jpg?alt=media",
+        "category": "Encendedores/varios",
+        "bulto":12
+      }
+    ]
+  }
+  

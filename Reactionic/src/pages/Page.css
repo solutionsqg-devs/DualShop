@@ -1,0 +1,31 @@
+.table2{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Products{
+    width: 300px;
+    margin: 5px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 10px black;
+
+}
+.Products div{
+    text-align: center;
+    padding-top: 10px;
+}
+.Total{
+    color: white;
+    background-color: rgb(38, 209, 112);
+    padding: 9px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.numtik{
+    background-color: rgb(144, 15, 224);
+    padding: 5px;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 1px 2px 1px 2px black;
+    position: relative;
+    left: -5px;
+}
