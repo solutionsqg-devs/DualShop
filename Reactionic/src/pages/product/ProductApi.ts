@@ -15,16 +15,11 @@ export async function removeProduct(id:string){
     })
 }
 
-export async function saveProduct(product:Product, selectedImage: File | null){
-    const formData = new FormData();
-    formData.append('product', JSON.stringify(product));
-    if (selectedImage) {
-        formData.append('file', selectedImage);
-    }
-
+export async function saveProduct(product:Product){
     await fetch('http://localhost:8080/api/products',{
     "method": 'POST',
-    "body": formData
+    "body": JSON.stringify(product),
+    "headers":{"Content-type": 'application/json'}
     })
 }
 

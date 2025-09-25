@@ -1,10 +1,10 @@
-import { IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonText, IonTitle, IonToast, IonToggle, IonToolbar } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
+import '../Page.css'; // Importar el archivo CSS global
 import Product from './Product';
 import { saveProduct, searchProductById } from './ProductApi';
-//import ExploreContainer from '../../components/ExploreContainer';
 
 const ProductEdit: React.FC = () => {
   const { name } = useParams<{name:string;}>();
@@ -13,6 +13,11 @@ const ProductEdit: React.FC = () => {
   const [toastMsg, setToastMsg] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [bundleOptions, setBundleOptions] = useState<number[]>([]);
+  const [isFeaturedProduct, setIsFeaturedProduct] = useState<boolean>(false);
+  const [showInOnlineCatalog, setShowInOnlineCatalog] = useState<boolean>(true);
+  const [category, setCategory] = useState<string>('');
+  const [tagName, setTagName] = useState<string>('');
+  const [stockMinimo, setStockMinimo] = useState<number | undefined>(undefined);
 
   const history = useHistory();
 
@@ -57,7 +62,15 @@ const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 };
 
 const save = async () => {
-    await saveProduct(product, selectedImage);
+    const productToSave: Product = {
+        ...product,
+        isFeatured: isFeaturedProduct,
+        showInCatalog: showInOnlineCatalog,
+        category: category,
+        tagName: tagName,
+        stockMinimo: stockMinimo,
+    };
+    await saveProduct(productToSave, selectedImage);
     setToastMsg('Producto agregado con exito')
     history.push('/folder/products')
 
@@ -69,74 +82,101 @@ const save = async () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>Registre sus productos</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+            <IonTitle size="large">Registre sus productos</IonTitle>
         </IonToolbar>
         </IonHeader>
         
     <IonContent>  
         <IonCard>
-        <IonTitle>{id == 'new' ? 'Agregar Producto' : 'Editar Producto'}</IonTitle>
-        
-        <IonItem>
-          <IonLabel position='stacked'>Nombre</IonLabel>
-          <IonInput onIonChange={e=> product.name = String(e.detail.value)} value={product.name}></IonInput>
-        </IonItem>
+            <div className="product-edit-form-container">
+                <div className="form-left-section">
+                    <div className="toggle-group">
+                        <IonItem lines="none">
+                            <IonLabel>Destacar producto</IonLabel>
+                            <IonToggle checked={isFeaturedProduct} onIonChange={e => setIsFeaturedProduct(e.detail.checked)} />
+                        </IonItem>
+                        <IonItem lines="none">
+                            <IonLabel>Mostrar en el Catálogo Online</IonLabel>
+                            <IonToggle checked={showInOnlineCatalog} onIonChange={e => setShowInOnlineCatalog(e.detail.checked)} />
+                        </IonItem>
+                    </div>
+                    <div className="image-upload-section">
+                        <div className="current-image-placeholder">
+                            {selectedImage ? (
+                                <img src={URL.createObjectURL(selectedImage)} alt="Previsualización" />
+                            ) : product.img ? (
+                                <img src={`http://localhost:8080${product.img}`} alt="Producto Actual" />
+                            ) : (
+                                <IonText>Label</IonText>
+                            )}
+                        </div>
+                        <div className="image-upload-controls">
+                            <input type="file" id="productImageUpload" style={{ display: 'none' }} onChange={handleFileChange} accept="image/*" />
+                            <IonButton onClick={() => document.getElementById('productImageUpload')?.click()} expand="block" fill="outline">
+                                Seleccionar una foto
+                            </IonButton>
+                            <IonText className="auto-reg-info">
+                                Registro automático (BETA)<br/>
+                                Solo sube una foto: la IA completa el nombre, precio, categoría y descripción en segundos. Todo queda listo rápido, y aún puedes ajustarlo como quieras.
+                            </IonText>
+                        </div>
+                    </div>
 
-        <IonItem>
-        <IonLabel position='stacked'>Detalle</IonLabel>
-        <IonInput onIonChange={e=> product.detail = String(e.detail.value)} value={product.detail} placeholder="Detalle producto"></IonInput>
-        </IonItem>
+                    <IonItem>
+                        <IonLabel position='stacked'>Nombre del producto</IonLabel>
+                        <IonInput onIonChange={e => setProduct({ ...product, name: String(e.detail.value) })} value={product.name} required></IonInput>
+                    </IonItem>
 
-        <IonItem>
-        <IonLabel position='stacked'>Precio Unitario</IonLabel>
-        <IonInput onIonChange={e=> product.unitPrice = Number(e.detail.value)} value={product.unitPrice} placeholder="Precio unitario del producto"></IonInput>
-        </IonItem>
+                    <IonItem>
+                        <IonLabel position='stacked'>Precio</IonLabel>
+                        <IonInput onIonChange={e => setProduct({ ...product, unitPrice: Number(e.detail.value) })} value={product.unitPrice} type="number" step="0.01" required></IonInput>
+                    </IonItem>
 
-        <IonItem>
-        <IonLabel position='stacked'>Tamaños de Bulto (separados por coma)</IonLabel>
-        <IonInput onIonChange={e=> product.bundleSizes = String(e.detail.value)} value={product.bundleSizes} placeholder="Ej: 6,12,24"></IonInput>
-        </IonItem>
+                    <IonItem>
+                        <IonLabel position='stacked'>Precio de promoción (Opcional)</IonLabel>
+                        <IonInput onIonChange={e => setProduct({ ...product, promotionPrice: Number(e.detail.value) })} value={product.promotionPrice} type="number" step="0.01"></IonInput>
+                    </IonItem>
 
-        <IonItem>
-        <IonLabel position='stacked'>Precio por bulto</IonLabel>
-        <IonInput onIonChange={e=> product.bundlePrice = Number(e.detail.value)} value={product.bundlePrice} placeholder="Precio por bulto" disabled></IonInput>
-        </IonItem>
+                    <IonItem>
+                        <IonLabel position='stacked'>Categoría</IonLabel>
+                        <IonInput onIonChange={e => setCategory(e.detail.value!)} value={category}></IonInput>
+                    </IonItem>
 
-        {bundleOptions.length > 0 && (
-          <IonItem>
-            <IonLabel position='stacked'>Precios por bulto:</IonLabel>
-            <div>
-              {bundleOptions.map(size => (
-                <p key={size}>{size} unidades: ${product.unitPrice! * size}</p>
-              ))}
+                    <IonItem>
+                        <IonLabel position='stacked'>Nombre de la etiqueta</IonLabel>
+                        <IonInput onIonChange={e => setTagName(e.detail.value!)} value={tagName}></IonInput>
+                    </IonItem>
+                </div>
+
+                <div className="form-right-section">
+                    <h3>Stock</h3>
+                    <IonItem>
+                        <IonLabel position='stacked'>Stock actual</IonLabel>
+                        <IonInput onIonChange={e => setProduct({ ...product, stock: Number(e.detail.value) })} value={product.stock} type="number"></IonInput>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel position='stacked'>Stock Mínimo</IonLabel>
+                        <IonInput onIonChange={e => setStockMinimo(Number(e.detail.value!))} value={stockMinimo} type="number"></IonInput>
+                    </IonItem>
+
+                    <div className="movement-history">
+                        <h3>Historial de movimientos</h3>
+                        <IonButton expand="block" fill="outline">Mostrar resultados</IonButton>
+                    </div>
+                </div>
             </div>
-          </IonItem>
-        )}
-
-        <IonItem>
-        <IonLabel position='stacked'>Imagen</IonLabel>
-        <input type="file" onChange={handleFileChange} />
-        </IonItem>
-
-        <IonItem>
-        <IonLabel position='stacked'>Stock</IonLabel>
-        <IonInput onIonChange={e=> product.stock = Number(e.detail.value)} value={product.stock} placeholder="Cantidad unitario"></IonInput>
-        </IonItem>
-
-        <IonItem>
-          <IonButton onClick={save} color="success" fill="solid" slot='end' size='default'>
-            <IonIcon icon={checkmark}/>
-            Guardar</IonButton>
-        </IonItem>
+            <IonButton expand="block" onClick={save} color="success" className="ion-margin-top">
+                Guardar Producto
+            </IonButton>
         </IonCard>
 
 

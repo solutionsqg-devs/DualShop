@@ -1,10 +1,9 @@
-import { IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
 import Supplier from './Supplier';
 import { saveSupplier, searchSupplierById } from './SupplierApi';
-import React from 'react';
 //import ExploreContainer from '../../components/ExploreContainer';
 
 const SupplierEdit: React.FC = () => {
@@ -45,9 +44,9 @@ const search = async () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>{id === 'new' ? 'Agregar Nuevo Proveedor' : 'Editar Proveedor'}</IonTitle>
         </IonToolbar>
       </IonHeader>
 

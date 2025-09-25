@@ -1,19 +1,19 @@
 import {
-  IonContent,
-  IonIcon,
-  IonImg,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonMenu,
-  IonMenuToggle
+    IonContent,
+    IonIcon,
+    IonImg,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonListHeader,
+    IonMenu,
+    IonMenuToggle
 } from '@ionic/react';
 
+import { archiveOutline, bagAdd, bagAddOutline, bagCheck, bagCheckOutline, heartOutline, heartSharp, idCard, idCardOutline, people, peopleOutline, storefrontOutline } from 'ionicons/icons';
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, trashOutline, trashSharp, warningOutline, warningSharp, people , peopleOutline, bagAddOutline, bagAdd, idCardOutline, idCard, storefrontOutline, bagCheckOutline, bagCheck } from 'ionicons/icons';
+import logo from '../images/logo.png';
 import './Menu.css';
-import logo from '../images/logo.png'
 
 interface AppPage {
   url: string;
@@ -60,20 +60,18 @@ const appPages: AppPage[] = [
     mdIcon: bagCheck
   },
   {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
+    title: 'Catálogo Online',
+    url: '/folder/catalogo-online',
+    iosIcon: archiveOutline, // Puedes cambiar el icono si hay uno más apropiado
+    mdIcon: archiveOutline
   },
   {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
+    title: 'Estadísticas',
+    url: '/folder/estadisticas',
+    iosIcon: heartOutline, // Puedes cambiar el icono si hay uno más apropiado
+    mdIcon: heartSharp
   }
 ];
-
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -95,16 +93,6 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>

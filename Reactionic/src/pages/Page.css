@@ -1,3 +1,22 @@
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/react/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css';
+import '@ionic/react/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
+
+/* Theme variables */
+import './theme/variables.css';
+
 .table2{
     display: flex;
     flex-wrap: wrap;
@@ -28,4 +47,273 @@
     box-shadow: 1px 2px 1px 2px black;
     position: relative;
     left: -5px;
+}
+
+/* Nuevos estilos para la vista de lista */
+.list-item {
+  border-bottom: 1px solid var(--ion-color-step-100, #f4f4f4);
+}
+
+.product-list-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.list-item h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.list-item p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 0;
+}
+
+/* Estilos para la información del negocio */
+.business-info {
+    margin-bottom: 20px;
+}
+
+.business-info ion-card {
+    margin: 5px;
+    text-align: center;
+}
+
+.business-info ion-card-title {
+    font-size: 14px;
+    color: #666;
+}
+
+.business-info ion-card-content {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+}
+
+.stock-low {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilos para ProductEdit.tsx */
+.product-edit-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.form-left-section, .form-right-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.toggle-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.toggle-group ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --background: transparent;
+}
+
+.toggle-group ion-label {
+    font-weight: normal;
+    color: #555;
+}
+
+.image-upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-image-placeholder {
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.current-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-upload-controls {
+    text-align: center;
+    width: 100%;
+}
+
+.image-upload-controls ion-button {
+    margin-bottom: 10px;
+    --background: var(--ion-color-medium);
+    --color: white;
+}
+
+.auto-reg-info {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.movement-history {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.movement-history h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.movement-history ion-button {
+    --background: var(--ion-color-tertiary);
+    --color: white;
+}
+
+ion-card ion-button.ion-margin-top {
+    margin-top: 20px;
+    --background: var(--ion-color-success);
+    --color: white;
+}
+
+/* Estilos para CatalogoOnlineConfigPage.tsx */
+.catalogo-config-card {
+    padding: 20px;
+}
+
+.catalogo-config-card ion-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.config-section {
+    margin-bottom: 25px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fcfcfc;
+}
+
+.config-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.banner-preview {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.config-section ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+}
+
+.config-section ion-label {
+    font-weight: bold;
+    color: #444;
+}
+
+.config-section ion-input,
+.config-section ion-select,
+.config-section input[type="color"] {
+    --padding-start: 0;
+    --padding-end: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.config-section input[type="color"] {
+    height: 40px; /* Ajustar altura para el input de color */
+    padding: 0 5px;
+}
+
+/* Estilos para EstadisticasPage.tsx */
+.estadisticas-grid {
+    padding: 10px;
+}
+
+.estadisticas-grid ion-card {
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.estadisticas-grid ion-card-header {
+    background-color: var(--ion-color-light);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--ion-color-step-100);
+}
+
+.estadisticas-grid ion-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--ion-color-dark);
+}
+
+.estadisticas-grid ion-card-content {
+    padding: 15px;
+    font-size: 18px;
+    color: var(--ion-color-medium);
+}
+
+.estadisticas-grid ion-card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.estadisticas-grid ion-card-content li {
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--ion-color-step-150);
+    font-size: 15px;
+    color: #666;
+}
+
+.estadisticas-grid ion-card-content li:last-child {
+    border-bottom: none;
+}
+
+.chart-placeholder {
+    background-color: var(--ion-color-step-50);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ion-color-medium);
+    font-style: italic;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }

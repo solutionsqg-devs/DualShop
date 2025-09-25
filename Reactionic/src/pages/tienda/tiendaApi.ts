@@ -4,7 +4,9 @@ export async function searchProducts (){
     "method": 'GET',
     "headers":{"Content-type": 'application/json'}
     })
-    return await response.json();
+    const data = await response.json();
+    console.log('Raw products data from API:', data);
+    return data;
 }
 export async function searchCustomers (){
     let response = await fetch('http://localhost:8080/api/customers',{

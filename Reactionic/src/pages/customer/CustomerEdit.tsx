@@ -1,10 +1,9 @@
-import { add, checkmark, close, grid, pencil, search } from 'ionicons/icons';
-import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonPage, IonRow, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonSelect, IonSelectOption, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { checkmark } from 'ionicons/icons';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
-import { useEffect, useState } from 'react';
-import { removeCustomer, saveCustomer, searchCustomerById, searchCustomers } from './CustomerApi';
 import Customer from './Customer';
-import React from 'react';
+import { saveCustomer, searchCustomerById } from './CustomerApi';
 //import ExploreContainer from '../../components/ExploreContainer';
 
 const CustomerEdit: React.FC = () => {
@@ -12,6 +11,7 @@ const CustomerEdit: React.FC = () => {
  
   const [customer , setCustomer] = useState<Customer>({});
   const [toastMsg, setToastMsg] = useState<string>('');
+  const [clientType, setClientType] = useState<string>('Minorista'); // Nuevo estado para el tipo de cliente
 
   const history = useHistory();
 
@@ -26,14 +26,17 @@ useEffect(() => {
   const search = async () => {
     if(id === 'new'){
     setCustomer({});
+    setClientType('Minorista'); // Valor por defecto para nuevos clientes
     }else{
       let result = await searchCustomerById(id);
       setCustomer(result);
+      setClientType(result.type || 'Minorista'); // Cargar tipo existente o Minorista por defecto
     }
   }
 
   const save = async () => {
-    await saveCustomer(customer);
+    const customerToSave: Customer = { ...customer, type: clientType };
+    await saveCustomer(customerToSave);
     setToastMsg('¡Cliente guardado correctamente!');
     history.push('/folder/customers')
   }
@@ -45,22 +48,22 @@ useEffect(() => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>Registro de Clientes</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+            <IonTitle size="large">Registro de Clientes</IonTitle>
         </IonToolbar>
         </IonHeader>
         
     <IonContent>  
         <IonCard>
-        <IonTitle>{id === 'new' ? 'Agregar Cliente' : 'Editar Cliente'}</IonTitle>
+        <IonTitle>{id === 'new' ? 'Agregar Nuevo Cliente' : 'Editar Cliente'}</IonTitle>
         
         <IonItem>
           <IonLabel position='stacked'>Nombre</IonLabel>
@@ -85,6 +88,13 @@ useEffect(() => {
         <IonItem>
         <IonLabel position='stacked'>Dirección</IonLabel>
         <IonInput onIonChange={e=> customer.address = String(e.detail.value)} value={customer.address} placeholder="Av. Siempre viva 123"></IonInput>
+        </IonItem>
+
+        <IonItem>
+          <IonSelect label="Tipo de Cliente" value={clientType} onIonChange={e => setClientType(e.detail.value)} interface="popover">
+            <IonSelectOption value="Minorista">Minorista</IonSelectOption>
+            <IonSelectOption value="Kiosco">Kiosco</IonSelectOption>
+          </IonSelect>
         </IonItem>
 
         <IonItem>

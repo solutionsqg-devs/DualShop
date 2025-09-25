@@ -1,0 +1,33 @@
+.unregistered-item-modal .ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: white;
+}
+
+.unregistered-item-modal .ion-title {
+    color: white;
+}
+
+.unregistered-item-modal .ion-button {
+    --color: white;
+}
+
+.unregistered-item-modal .ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+}
+
+.unregistered-item-modal .ion-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.unregistered-item-modal .ion-input {
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.unregistered-item-modal .ion-margin-top {
+    margin-top: 20px;
+    --background: var(--ion-color-success);
+}
+

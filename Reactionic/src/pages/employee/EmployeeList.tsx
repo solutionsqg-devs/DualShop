@@ -1,9 +1,9 @@
+import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { add, close, pencil } from 'ionicons/icons';
-import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import { useHistory, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { removeEmployee, searchEmployees } from './EmployeeApi';
+import { useHistory, useParams } from 'react-router';
 import Employee from './Employee';
+import { removeEmployee, searchEmployees } from './EmployeeApi';
 //import ExploreContainer from '../../components/ExploreContainer';
 
 const EmployeeList: React.FC = () => {
@@ -35,7 +35,7 @@ useEffect(() => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
           <IonTitle>{name}</IonTitle>
         </IonToolbar>

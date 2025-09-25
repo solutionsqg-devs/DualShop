@@ -1,24 +1,31 @@
+import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
 import { add, close, pencil } from 'ionicons/icons';
-import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import { useHistory, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { removeCustomer, searchCustomers } from './CustomerApi';
-import customer from './Customer';
+import { useHistory, useParams } from 'react-router';
 import Customer from './Customer';
+import { removeCustomer, searchCustomers } from './CustomerApi';
 //import ExploreContainer from '../../components/ExploreContainer';
 
 const CustomerList: React.FC = () => {
   const { name } = useParams<{ name: string; }>();
   const [clientes , setClientes] = useState<Customer[]>([]);
   const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState('');
 
 useEffect(() => {
   search();
-},[history.location.pathname]);
+},[history.location.pathname, searchTerm]);
 
   const search = async () => {
     let result = await searchCustomers();
-    setClientes(result);
+    const filtered = result.filter((client: Customer) => {
+      const fullName = `${client.firstname} ${client.lastname}`.toLowerCase();
+      const matchesSearch = fullName.includes(searchTerm.toLowerCase()) ||
+                            (client.email && client.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                            (client.phone && client.phone.includes(searchTerm));
+      return matchesSearch;
+    });
+    setClientes(filtered);
   }
   const remove = async (id:string) =>{
     await removeCustomer(id);
@@ -36,9 +43,10 @@ useEffect(() => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
           <IonTitle>{name}</IonTitle>
+          <IonSearchbar value={searchTerm} onIonInput={(e: any) => setSearchTerm(e.target.value)} placeholder="Buscar clientes..."></IonSearchbar>
         </IonToolbar>
       </IonHeader>
 

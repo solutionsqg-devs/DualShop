@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
-import Navbar from './components/navbar/navbar.jsx';
-import Home from './components/home/home.jsx';
-import { CarritoContext, CarritoProvider } from './context/carritoContext.jsx';
 import ConsentModal from './components/consent/consentModal.jsx';
+import Home from './components/home/home.jsx';
+import Navbar from './components/navbar/navbar.jsx';
+import { CarritoContext, CarritoProvider } from './context/carritoContext.jsx';
 
 const App = () => {
     const [searchText, setSearchText] = useState('');
@@ -40,5 +40,5 @@ const App = () => {
         </div>
     );
 };
-
+    
 export default App;

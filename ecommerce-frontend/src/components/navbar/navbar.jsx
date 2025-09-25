@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { CarritoContext } from '../../context/carritoContext';
 import Carrito from './divicion/carrito';
 import Contacto from './divicion/contacto';
-import { CarritoContext } from '../../context/carritoContext';
 
 const Navbar = ({ onSearchChange }) => {
     const { totalProductos, totalCarrito } = useContext(CarritoContext);
@@ -72,6 +72,6 @@ const Navbar = ({ onSearchChange }) => {
             {overlayOpen && <div className="overlay" onClick={() => {handleSobreNosotrosClose(); handleCarritoClose();}}></div>}
         </nav>
     );
-}
+};
 
 export default Navbar;

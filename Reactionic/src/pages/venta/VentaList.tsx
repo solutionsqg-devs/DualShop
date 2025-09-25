@@ -1,15 +1,16 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonGrid, IonHeader, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonGrid, IonHeader, IonPage, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar } from "@ionic/react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
+import Logo from '../../images/logo.png';
 import Ventas from "./Ventas";
-import { useEffect, useState } from "react";
 import { searchVentas } from "./VentasApi";
-import Logo from '../../images/logo.png'
-import React from "react";
 
 const VentaList: React.FC = () => {
    const {name} = useParams<{name : string}>();
    const [ventas , setVenta] = useState<Ventas[]>([]);
    const history = useHistory();
+   const [searchTerm, setSearchTerm] = useState('');
+   const [filterStatus, setFilterStatus] = useState('Todos');
 
    useEffect(()=>{ 
    search()
@@ -17,8 +18,20 @@ const VentaList: React.FC = () => {
 
    const search = async () => {
     let result = await searchVentas();
-    setVenta(result);
+    const filtered = result.filter((venta: Ventas) => {
+      const matchesSearch = venta.cliente.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            venta.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                            String(venta.id_total).includes(searchTerm.toLowerCase());
+      const matchesStatus = filterStatus === 'Todos' || venta.estado === filterStatus;
+      return matchesSearch && matchesStatus;
+    });
+    setVenta(filtered);
    };
+
+   useEffect(() => {
+    search();
+  }, [searchTerm, filterStatus]);
+ 
   const view = (id:string) => {
   history.push('/folder/ventas/'+id)
   }
@@ -28,9 +41,17 @@ const VentaList: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            {/* <IonMenuButton /> */}
           </IonButtons>
           <IonTitle>{name}</IonTitle>
+          <IonSearchbar value={searchTerm} onIonInput={(e: any) => setSearchTerm(e.target.value)} placeholder="Buscar pedidos..."></IonSearchbar>
+          <IonSelect label="Estado" value={filterStatus} onIonChange={(e) => setFilterStatus(e.detail.value)} interface="popover" placeholder="Filtrar por estado">
+            <IonSelectOption value="Todos">Todos los estados</IonSelectOption>
+            <IonSelectOption value="Pendiente">Pendiente</IonSelectOption>
+            <IonSelectOption value="En proceso">En proceso</IonSelectOption>
+            <IonSelectOption value="Completado">Completado</IonSelectOption>
+            <IonSelectOption value="Cancelado">Cancelado</IonSelectOption>
+          </IonSelect>
         </IonToolbar>
       </IonHeader>
 
